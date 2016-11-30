@@ -7,7 +7,10 @@ TriviaBot::TriviaBot() {
 void TriviaBot::ImportQuestions(const char* path, bool overwrite) {
 	std::string   line;
 	std::ifstream inFile(path);
-
+	if(!inFile.good()){
+		std::cerr << "Error importing questions\n";
+		exit(1);
+	}
 	// clear questions if requested
 	if(overwrite) questions_.clear();
 
